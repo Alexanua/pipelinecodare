@@ -25,4 +25,4 @@ artifacts:
 
 cache:
   paths:
-    - '/root/.m2/**/*'  # Cache för Maven-biblioteket
+    - '/root/.m2/**/*'  # Cache för Maven-biblioteket1
