@@ -3,19 +3,20 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto21
+      java: corretto17
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - echo Installing Maven dependencies...
+      - mvn clean install -DskipTests
   build:
     commands:
       - echo Build started on `date`
-      - mvn install
-      - mvn clean package
+      - mvn package -DskipTests
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/pipelinecodare-main.jar
+    - target/pipelinecodare.jar
+  name: pipelinecodare-0.0.1-SNAPSHOT.jar
   discard-paths: yes
