@@ -9,34 +9,32 @@ phases:
       - apt-get update -y
       - apt-get install -y maven
       - apt-get install -y docker
+      - aws --version
+      - docker --version
 
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 891377296740.dkr.ecr.us-east-1.amazonaws.com
 
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the application
-      - mvn package -DskipTests # Bygger din applikation och hoppar över tester
-      - mvn spring-boot:build-image # Bygger en Docker-bild med Spring Boot Maven Plugin
+      - echo Building the Docker image...
+      - mvn package -DskipTests
+      - docker build -t pipelinecodare:0.2 .
+      - docker tag pipelinecodare:0.2 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:0.2
 
   post_build:
     commands:
-      - echo Pushing Docker image to ECR...
-      - docker tag pipelinecodare:latest 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:latest
-      - docker push 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:latest
-      - echo Docker image pushed to ECR
-
-artifacts:
-  files:
-    - target/pipelinecodare.jar
+      - echo Pushing the Docker image to Amazon ECR...
+      - docker push 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:0.2
+      - echo Docker image successfully pushed to Amazon ECR
 
 cache:
   paths:
     - '/root/.m2/**/*'
 
-
-
-
+artifacts:
+  files:
+    - target/pipelinecodare.jar
