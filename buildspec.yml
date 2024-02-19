@@ -4,37 +4,18 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-    commands:
-      - echo Installing Maven and Docker
-      - apt-get update -y
-      - apt-get install -y maven
-      - apt-get install -y docker
-      - aws --version
-      - docker --version
-
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 891377296740.dkr.ecr.us-east-1.amazonaws.com
-
+      - echo Nothing to do in the pre_build phase...
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...
-      - mvn package -DskipTests
-      - docker build -t pipelinecodare:0.2 .
-      - docker tag pipelinecodare:0.2 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:0.2
-
+      - mvn install
+      - mvn clean package
   post_build:
     commands:
-      - echo Pushing the Docker image to Amazon ECR...
-      - docker push 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:0.2
-      - echo Docker image successfully pushed to Amazon ECR
-
-cache:
-  paths:
-    - '/root/.m2/**/*'
-
+      - echo Build completed on `date`
 artifacts:
   files:
     - target/pipelinecodare.jar
+  discard-paths: yes
