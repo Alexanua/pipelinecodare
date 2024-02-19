@@ -5,19 +5,29 @@ phases:
     runtime-versions:
       java: corretto17
     commands:
-      - echo Installing Maven
-      - yum update -y
-      - yum install -y maven
+      - echo Installing Maven and Docker
+      - apt-get update -y
+      - apt-get install -y maven
+      - apt-get install -y docker
 
   pre_build:
     commands:
-      - echo Running unit tests
-      - mvn test
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region us-east-1)
 
   build:
     commands:
-      - echo Building the project
-      - mvn clean package -DskipTests=true
+      - echo Build started on `date`
+      - echo Building the application
+      - mvn package -DskipTests # Bygger din applikation och hoppar över tester
+      - mvn spring-boot:build-image # Bygger en Docker-bild med Spring Boot Maven Plugin
+
+  post_build:
+    commands:
+      - echo Pushing Docker image to ECR...
+      - docker tag pipelinecodare:latest 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:latest
+      - docker push 891377296740.dkr.ecr.us-east-1.amazonaws.com/repository-springboot-pipelinecodare-ecr:latest
+      - echo Docker image pushed to ECR
 
 artifacts:
   files:
@@ -26,3 +36,7 @@ artifacts:
 cache:
   paths:
     - '/root/.m2/**/*'
+
+
+
+
