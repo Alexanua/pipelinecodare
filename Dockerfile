@@ -4,3 +4,6 @@ VOLUME /tmp
 EXPOSE 8085
 ADD target/pipelinecodare.jar pipelinecodare.jar
 ENTRYPOINT ["java","-jar","/pipelinecodare.jar"]
+
+
+
