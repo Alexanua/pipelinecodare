@@ -3,11 +3,11 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto17  # Uppdaterad för att matcha din pom.xml som använder Java 17
+      java: corretto17
     commands:
       - echo Installing Maven
-      - apt-get update -y
-      - apt-get install -y maven  # Endast om Maven inte finns förinstallerat
+      - yum update -y
+      - yum install -y maven
 
   pre_build:
     commands:
@@ -21,8 +21,8 @@ phases:
 
 artifacts:
   files:
-    - target/pipelinecodare.jar  # Förutsatt att din JAR-fil börjar med 'pipelinecodare'
+    - target/pipelinecodare.jar
 
 cache:
   paths:
-    - '/root/.m2/**/*'  # Cache för Maven-biblioteket
+    - '/root/.m2/**/*'
