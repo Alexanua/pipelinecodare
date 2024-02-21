@@ -1,7 +1,10 @@
+// Ladda in miljövariabler från .env-filen
 require('dotenv').config();
+
 const express = require('express');
 const mysql = require('mysql2');
 
+// Skapar en instans av express-appen
 const app = express();
 
 // Skapar databasanslutningen med konfiguration från .env-filen
