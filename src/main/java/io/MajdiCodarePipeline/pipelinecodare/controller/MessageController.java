@@ -56,3 +56,30 @@ public class MessageController {
         }
     }
 }
+
+//post
+//http://localhost:8081/api/messages/addMessage
+//{
+//  "content": ""
+//}
+//Method: GET
+//URL: http://localhost:8081/api/messages/getMessages
+
+//get id
+//URL: http://localhost:8081/api/messages/{id}
+
+//update
+//Edit One Message by ID
+   //     Method: PATCH
+      //  URL: http://localhost:8081/api/messages/{id}
+     //   Body: (JSON format)
+
+       // {"content": "Updated message content here"
+     //   }
+
+//Method: DELETE
+//URL: http://localhost:8081/api/messages/{id}
+
+
+
+
