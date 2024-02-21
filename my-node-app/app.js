@@ -1,5 +1,5 @@
-// Ladda in miljövariabler från .env-filen
-require('dotenv').config();
+// Ladda in miljövariabler från en specifik .env-fil
+require('dotenv').config({ path: '/Users/macbook/Downloads/pipelinecodare/my-node-app/majdi.env' });
 
 const express = require('express');
 const mysql = require('mysql2');
@@ -29,8 +29,8 @@ app.get('/', (req, res) => {
     res.send('Hej från Node.js på AWS!');
 });
 
-// Startar servern på port specificerad i .env, eller 8086 som fallback
-const PORT = process.env.PORT || 8086;
+// Startar servern på den port som specificeras i .env, eller 3000 som fallback
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servern kör på port ${PORT}`);
 });

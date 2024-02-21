@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.send('Hej från Node.js på AWS!');
 });
 
-const PORT = process.env.PORT || 8086;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servern kör på port ${PORT}`);
 });
