@@ -1,29 +1,16 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      java: corretto11
-    commands:
-      - echo "Installing Maven"
-      - echo "abodwashere"
-      - yum update -y
-      - yum install -y maven
-
-  pre_build:
-    commands:
-      - echo "Running unit tests"
-      - mvn test
-
   build:
     commands:
-      - echo "Building the project"
-      - mvn clean package -DskipTests
+      - echo "packaging jar file .."
+      - mvn clean package
+
+post_build:
+  commands:
+    - echo "build complete"
 
 artifacts:
   files:
     - target/pipelinecodare.jar
-
-cache:
-  paths:
-    - /root/.m2/**
+  discard-paths: yes
