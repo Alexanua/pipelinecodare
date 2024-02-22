@@ -24,11 +24,14 @@ public class MessageController {
 
     @GetMapping("/getMessages")
     public ResponseEntity<List<Message>> getMessages() {
+        //return ResponseEntity.status(200).body(mySqlRepository.findAll());
         return ResponseEntity.status(200).body(mySqlRepository.findAll());
     }
-    @GetMapping("/abdullah")
-    public ResponseEntity<List<Message>> getMessages() {
-        return ResponseEntity.status(200).body('abdullah');
+
+    @GetMapping("/x")
+    public ResponseEntity<List<Message>> x() {
+        //return ResponseEntity.status(200).body(mySqlRepository.findAll());
+        return ResponseEntity.status(200).body(mySqlRepository.findAll());
     }
 
     @GetMapping("/{id}")
