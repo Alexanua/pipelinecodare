@@ -15,7 +15,7 @@ public class MessageController {
 
     @Autowired
     private MySqlRepository mySqlRepository;
-
+// att skapa post
     @PostMapping("/addMessage")
     public ResponseEntity<Message> addMessage(@RequestBody Message message) {
         Message savedMessage = mySqlRepository.save(message);
