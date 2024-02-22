@@ -55,7 +55,7 @@ public class MessageController {
             mySqlRepository.deleteById(id);
             return ResponseEntity.status(200).body("Message with ID " + id + " was deleted.");
         } else {
-            return ResponseEntity.status(404).body("Message with ID " + id + " not found.");
+            return ResponseEntity.status(404).body("Message with ID " + id + " not found. yala");
         }
     }
 }
