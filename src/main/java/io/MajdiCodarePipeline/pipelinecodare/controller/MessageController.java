@@ -27,11 +27,7 @@ public class MessageController {
         //return ResponseEntity.status(200).body(mySqlRepository.findAll());
         return ResponseEntity.status(200).body(mySqlRepository.findAll());
     }
-    @GetMapping("/")
-    public ResponseEntity<List<Message>> home() {
-        //return ResponseEntity.status(200).body(mySqlRepository.findAll());
-        return ResponseEntity.status(200).body(mySqlRepository.findAll());
-    }
+
 
 
     @GetMapping("/{id}")
