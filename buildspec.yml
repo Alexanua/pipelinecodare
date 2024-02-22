@@ -6,6 +6,7 @@ phases:
       java: corretto11
     commands:
       - echo "Installing Maven"
+      - echo "abodwashere"
       - yum update -y
       - yum install -y maven
 
