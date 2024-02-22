@@ -5,24 +5,25 @@ phases:
     runtime-versions:
       java: corretto20
     commands:
-      - echo Installing Maven
+      - echo "Installing Maven"
       - yum update -y
       - yum install -y maven
 
   pre_build:
     commands:
-      - echo Running unit tests
+      - echo "Running unit tests"
       - mvn test
 
   build:
     commands:
-      - echo Building the project
-      - mvn clean package -DskipTests=true
+      - echo "Building the project"
+      - mvn clean package -DskipTests
 
 artifacts:
   files:
-    - target/pipelinecodare.jar
+    - target/pipelinecode.jar
 
 cache:
   paths:
-    - '/root/.m2/**/*'
+    - /root/.m2/**
+
