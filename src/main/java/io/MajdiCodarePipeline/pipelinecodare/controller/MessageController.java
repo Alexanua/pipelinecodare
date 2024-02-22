@@ -15,11 +15,7 @@ public class MessageController {
 
     @Autowired
     private MySqlRepository mySqlRepository;
-
-
-
-    // att skapa post
-
+// att skapa post
     @PostMapping("/addMessage")
     public ResponseEntity<Message> addMessage(@RequestBody Message message) {
         Message savedMessage = mySqlRepository.save(message);
@@ -31,6 +27,7 @@ public class MessageController {
         //return ResponseEntity.status(200).body(mySqlRepository.findAll());
         return ResponseEntity.status(200).body(mySqlRepository.findAll());
     }
+
 
 
     @GetMapping("/{id}")
