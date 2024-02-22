@@ -26,6 +26,10 @@ public class MessageController {
     public ResponseEntity<List<Message>> getMessages() {
         return ResponseEntity.status(200).body(mySqlRepository.findAll());
     }
+    @GetMapping("/abdullah")
+    public ResponseEntity<List<Message>> getMessages() {
+        return ResponseEntity.status(200).body('abdullah');
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Message> getOneMessage(@PathVariable Long id) {
