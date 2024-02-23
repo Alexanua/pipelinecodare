@@ -86,4 +86,4 @@ public class MessageController {
 
 
 
-//http://majdiabdah.us-east-1.elasticbeanstalk.com/
+//http://majdiabdah.us-east-1.elasticbeanstalk.com/api/messages/getMessages
