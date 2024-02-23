@@ -60,6 +60,8 @@ public class MessageController {
     }
 }
 
+// hello
+
 //post
 //http://localhost:5000/api/messages/addMessage
 //{
