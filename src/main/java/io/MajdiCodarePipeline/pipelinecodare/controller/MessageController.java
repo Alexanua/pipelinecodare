@@ -87,3 +87,26 @@ public class MessageController {
 
 
 //http://majdiabdah.us-east-1.elasticbeanstalk.com/api/messages/getMessages
+//http://majdiabdah.us-east-1.elasticbeanstalk.com/api/messages/addMessage
+//{
+//  "content": ""
+//}
+
+//get id
+//http://majdiabdah.us-east-1.elasticbeanstalk.com/api/messages/{id}
+
+
+//update
+//Edit One Message by ID
+//     Method: PATCH
+
+//   Body: (JSON format)
+
+// {"content": "Updated message content here"
+//   }
+
+//http://majdiabdah.us-east-1.elasticbeanstalk.com/api/messages/{id}
+
+
+//Method: DELETE
+//http://majdiabdah.us-east-1.elasticbeanstalk.com/api/messages/{id}
