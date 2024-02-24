@@ -60,7 +60,7 @@ public class MessageController {
     }
 }
 
-//hello
+//Jag ska ta screenshots för uppgift
 
 //post
 //http://localhost:5000/api/messages/addMessage
